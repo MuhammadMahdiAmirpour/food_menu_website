@@ -12,6 +12,10 @@
   <body>
     <div class="container alert alert-info">
       <h1>username: {{ user.username }}</h1>
+      <h2>picture: </h2>
+      <img src="{{ user.profile.image.url }}" width="500" height="600"> 
+      <h3>location: </h3>
+      <h4>{{ user.profile.location }}</h4>
     </div>
   </body>
 </html>
