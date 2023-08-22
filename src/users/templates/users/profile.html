@@ -10,14 +10,8 @@
     <link href="css/style.css" rel="stylesheet">
   </head>
   <body>
-    <form method="POST">
-      {% csrf_token %}
-      <div class="container">
-        {{ form }}
-      </div>
-      <div class="container">
-        <button type="submit" class="btn btn-primary">Login</button>
-      </div>
-    </form>
+    <div class="container alert alert-info">
+      <h1>username: {{ user.username }}</h1>
+    </div>
   </body>
 </html>
