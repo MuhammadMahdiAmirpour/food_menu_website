@@ -1,12 +1,27 @@
-{% load bootstrap5 %}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
+{% extends 'food_menu/base.html' %}
+{% block body %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <title></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    h1 {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+    p {text-align: center;}
+    div {
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    img {text-align: center;}
+    </style>
   </head>
   <body>
     <div class="alert alert-danger">
@@ -14,3 +29,4 @@
     </div>
   </body>
 </html>
+{% endblock %}

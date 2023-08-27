@@ -1,6 +1,36 @@
-{% load bootstrap5 %}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
+{% extends 'food_menu/base.html' %}
+
+{% block body %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 offset-md-4">
+      <div class="card">
+        <div class="card-header text-white bg-info">
+          <div class="card-title">
+            Signup
+          </div>
+        </div>
+        <div class="card-body">
+          <form method="POST">
+            {% csrf_token %}
+            {% for field in form %}
+              <div class="form-group">
+                {{ field.name }}:
+                <br>
+                {{ field }}
+              </div>
+            {% endfor %}
+            <br>
+            <button type="submit" class="btn btn-primary">Signup</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -9,10 +39,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <form method="POST">
-      {% csrf_token %}
-      {{form}}
-      <button type="submit">Signup</button>
-    </form>
+
   </body>
 </html>

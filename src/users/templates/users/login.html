@@ -1,23 +1,35 @@
-{% load bootstrap5 %}
-{% bootstrap_css %}
-{% bootstrap_javascript %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title></title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/style.css" rel="stylesheet">
-  </head>
-  <body>
-    <form method="POST">
-      {% csrf_token %}
-      <div class="container">
-        {{ form }}
+{% extends 'food_menu/base.html' %}
+{% block body %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 offset-md-4">
+      <div class="card">
+        <div class="card-header bg-info">
+          <div class="card-title">
+            Login
+          </div>
+        </div>
+        <div class="card-body">
+          <form method="POST">
+            {% csrf_token %}
+            <div class="container">
+              {% for field in form %}
+                <div class="form-group">
+                  {{ field.name }}:
+                  <br>
+                  {{ field }}
+                </div>
+              {% endfor %}
+            </div>
+            <div class="container">
+              <br>
+              <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+          </form>
+        </div>
       </div>
-      <div class="container">
-        <button type="submit" class="btn btn-primary">Login</button>
-      </div>
-    </form>
-  </body>
-</html>
+    </div>
+  </div>
+</div>
+{% endblock %}
+

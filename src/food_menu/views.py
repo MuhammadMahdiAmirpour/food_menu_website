@@ -1,9 +1,9 @@
-from django.shortcuts import redirect
-from django.shortcuts import render
+# from django.shortcuts import redirect
+# from django.shortcuts import render
 # from django.http import HttpResponse
 from .models import Item
 # from django.template import loader
-from .forms import ItemForm
+# from .forms import ItemForm
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import DeleteView
@@ -50,7 +50,10 @@ class EditItem(UpdateView):
             'item_price',
             'item_image',
             ]
-    success_url = 'food_menu:index'
+    def form_valid(self, form):
+        form.instance.username = self.request.user
+        return super().form_valid(form)
+
 
 # def edit_item(request, id):
 #     item = Item.objects.get(id=id)
@@ -60,6 +63,7 @@ class EditItem(UpdateView):
 #         return redirect('food_menu:index')
 #     return render(request, 'food_menu/item_form.html', {'form':form, 'item': item})
 
+# This is a class based view for creating item
 class CreateItem(CreateView):
     model = Item
     fields = [
@@ -68,6 +72,10 @@ class CreateItem(CreateView):
             'item_price',
             'item_image',
             ]
+    template_name='food_menu/item_form.html'
+    def form_valid(self, form):
+        form.instance.username = self.request.user
+        return super().form_valid(form)
 
 # def create_item(request):
 #     form = ItemForm(request.POST or None)
@@ -87,4 +95,5 @@ class DeleteItem(DeleteView):
 #         item.delete()
 #         return redirect('food_menu:index')
 #     return render(request, 'food_menu/item_delete.html', {'item': item})
+
 

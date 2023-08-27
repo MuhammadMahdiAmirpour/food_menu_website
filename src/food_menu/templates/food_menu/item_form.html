@@ -1,8 +1,41 @@
 {% extends 'food_menu/base.html' %}
 {% block body %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 offset-md-4">
+      <div class="card">
+        <div class="card-header bg-info">
+          <div class="card-title">
+            Add Item
+          </div>
+        </div>
+        <div class="card-body">
+          <form method="POST">
+            {% csrf_token %}
+            <div class="container">
+              {% for field in form %}
+                <div class="form-group">
+                  {{ field.name }}:
+                  <br>
+                  {{ field }}
+                </div>
+              {% endfor %}
+            </div>
+            <div class="container">
+              <br>
+              <button type="submit" class="btn btn-primary">Add Item</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
   <form method="POST">
     {% csrf_token %}
     {{form}}
     <button type="submit" class="btn btn-primary">Save</button>
   </form>
-{% endblock %}
